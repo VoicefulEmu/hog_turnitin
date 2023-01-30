@@ -46,8 +46,6 @@ def picky_piggy(score):
     score:  The opponent's current score.
     """
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
-    
     multiplier = 10 ** (score % 6)
     next_step = (7.14285) * multiplier
     desired_digit = next_step % 10

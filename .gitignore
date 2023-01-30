@@ -4,3 +4,5 @@
 /.ok_storage.dir
 /ok
 /proj01.ok
+*.pyc
+__pycache__
