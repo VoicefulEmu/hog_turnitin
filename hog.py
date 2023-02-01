@@ -220,27 +220,21 @@ def announce_highest(who, last_score=0, running_high=0):
     assert who == 0 or who == 1, 'The who argument should indicate a player.'
     # BEGIN PROBLEM 7
     if who == 0:
-        def say(score0, score1):
-            nonlocal running_high
-            nonlocal last_score
+        def say(score0, score1, last_score = last_score, running_high= running_high):
             difference = score0 - last_score
             if difference > running_high:
                 print (f"{abs(difference)} point(s)! That's a record gain for Player {who}!")
                 running_high = difference
             last_score = score0
-            return say
+            return announce_highest(who, last_score=score0,running_high=running_high)
         return say
-   
     else:
-        def say(score0, score1):
-            nonlocal running_high
-            nonlocal last_score
+        def say(score0, score1,last_score = last_score,running_high = running_high):
             difference = score1 - last_score
             if difference > running_high:
                 print (f"{abs(difference)} point(s)! That's a record gain for Player {who}!")
                 running_high = difference
-            last_score = score1
-            return say
+            return announce_highest(who, last_score=score1,running_high=running_high)
         return say
 
 
@@ -308,13 +302,15 @@ def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
     # BEGIN PROBLEM 9
     dice_rolls = make_averaged(roll_dice)
     i = 1
-    best_roll = 0
+    recommended_number = 0
+    best_average = 0
     while i <= 10:
         test = dice_rolls(i, dice)
-        if test != 1:
-            best_roll += 1
+        if test > best_average:
+            best_average = test
+            recommended_number += 1
         i += 1
-    return best_roll
+    return recommended_number
 
 
     return dice_rolls(1,dice)
