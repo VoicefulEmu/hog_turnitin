@@ -4,5 +4,6 @@
 /.ok_storage.dir
 /ok
 /proj01.ok
-*.pyc
-__pycache__
+/*.pyc
+/__pycache__
+/tests

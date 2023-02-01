@@ -38,8 +38,6 @@ def roll_dice(num_rolls, dice=six_sided):
         
     # END PROBLEM 1
 
-# roll_dice(5,make_test_dice(2,3,1))
-
 def picky_piggy(score):
     """Return the points scored from rolling 0 dice.
 
@@ -232,7 +230,6 @@ def announce_highest(who, last_score=0, running_high=0):
             last_score = score0
             return say
         return say
-            #     print (f"Player {who} gets {last_score} points; not enough for a new high") 
    
     else:
         def say(score0, score1):
@@ -245,7 +242,6 @@ def announce_highest(who, last_score=0, running_high=0):
             last_score = score1
             return say
         return say
-            #print (f"Player {who} gets {last_score} points; not enough for a new high")
 
 
 
@@ -406,11 +402,3 @@ def run(*args):
 
     if args.run_experiments:
         run_experiments()
-
-
-
-
-# def echo(s0, s1):
-#      print(s0, s1)
-#      return echo
-# s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(3), goal=5, say=echo)
