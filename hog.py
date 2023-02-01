@@ -144,8 +144,9 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading
     # BEGIN PROBLEM 6
         speech = speech(score0, score1)
-    # END PROBLEM 6
     return score0, score1
+    # END PROBLEM 6
+
 #######################
 # Phase 2: Commentary #
 #######################
@@ -220,9 +221,35 @@ def announce_highest(who, last_score=0, running_high=0):
     """
     assert who == 0 or who == 1, 'The who argument should indicate a player.'
     # BEGIN PROBLEM 7
-    "*** YOUR CODE HERE ***"
-    # END PROBLEM 7
+    if who == 0:
+        def say(score0, score1):
+            nonlocal running_high
+            nonlocal last_score
+            difference = score0 - last_score
+            if difference > running_high:
+                print (f"{abs(difference)} point(s)! That's a record gain for Player {who}!")
+                running_high = difference
+            last_score = score0
+            return say
+        return say
+            #     print (f"Player {who} gets {last_score} points; not enough for a new high") 
+   
+    else:
+        def say(score0, score1):
+            nonlocal running_high
+            nonlocal last_score
+            difference = score1 - last_score
+            if difference > running_high:
+                print (f"{abs(difference)} point(s)! That's a record gain for Player {who}!")
+                running_high = difference
+            last_score = score1
+            return say
+        return say
+            #print (f"Player {who} gets {last_score} points; not enough for a new high")
 
+
+
+    # END PROBLEM 7
 
 #######################
 # Phase 3: Strategies #
