@@ -287,7 +287,16 @@ def make_averaged(original_function, trials_count=1000):
     3.0
     """
     # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
+    def new_func(*args):
+        total = 0
+        i = 1
+        while i <= trials_count:
+            total += original_function(*args)
+            i +=1
+        average_result = total / trials_count
+        return average_result
+    return new_func
+
     # END PROBLEM 8
 
 
