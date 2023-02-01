@@ -300,23 +300,21 @@ def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
     1
     """
     # BEGIN PROBLEM 9
-    dice_rolls = make_averaged(roll_dice)
     i = 1
-    recommended_number = 0
-    best_average = 0
+    rec_num_rolls = 0
+    max_avg_score = 0
     while i <= 10:
-        test = dice_rolls(i, dice)
-        if test > best_average:
-            best_average = test
-            recommended_number += 1
+        dice_func = make_averaged(roll_dice, trials_count)
+        avg_score = dice_func(i, dice)
+        if avg_score >  max_avg_score:
+            max_avg_score = avg_score
+            rec_num_rolls += 1
         i += 1
-    return recommended_number
-
-
-    return dice_rolls(1,dice)
+    return rec_num_rolls
 
     # END PROBLEM 9
-
+# dice = make_test_dice(6, 5, 4, 3, 2, 1)  # dice sweeps from 1 through 6
+# max_scoring_num_rolls(dice, trials_count=1) # ensure trials_count is being used
 
 def winner(strategy0, strategy1):
     """Return 0 if strategy0 wins against strategy1, and 1 otherwise."""
@@ -355,7 +353,10 @@ def picky_piggy_strategy(score, opponent_score, cutoff=8, num_rolls=6):
     returns NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
-    return 6  # Remove this line once implemented.
+    gains =picky_piggy(opponent_score)
+    if gains >= cutoff:
+        return 0
+    return num_rolls
     # END PROBLEM 10
 
 
@@ -365,7 +366,11 @@ def hog_pile_strategy(score, opponent_score, cutoff=8, num_rolls=6):
     Otherwise, it returns NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    return 6  # Remove this line once implemented.
+    picky_piggy_score = picky_piggy(opponent_score)
+    if score + picky_piggy_score == opponent_score:
+        return 0 
+    else:
+        return picky_piggy_strategy(score, opponent_score, cutoff,num_rolls)
     # END PROBLEM 11
 
 
