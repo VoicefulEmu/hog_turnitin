@@ -308,13 +308,13 @@ def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
         avg_score = dice_func(i, dice)
         if avg_score >  max_avg_score:
             max_avg_score = avg_score
-            rec_num_rolls += 1
+            rec_num_rolls = i
         i += 1
     return rec_num_rolls
 
     # END PROBLEM 9
-# dice = make_test_dice(6, 5, 4, 3, 2, 1)  # dice sweeps from 1 through 6
-# max_scoring_num_rolls(dice, trials_count=1) # ensure trials_count is being used
+dice = make_test_dice(6, 5, 4, 3, 2, 1)  # dice sweeps from 1 through 6
+max_scoring_num_rolls(dice, trials_count=1) # ensure trials_count is being used
 
 def winner(strategy0, strategy1):
     """Return 0 if strategy0 wins against strategy1, and 1 otherwise."""
